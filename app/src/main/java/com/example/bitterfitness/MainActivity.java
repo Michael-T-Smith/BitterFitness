@@ -1,5 +1,10 @@
 package com.example.bitterfitness;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,13 +19,17 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     SQLiteManager sqLiteManager;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = getSharedPreferences("BitterFitness", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         Button loginButton = findViewById(R.id.login);
         sqLiteManager = loadDBFromMemory();
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+
 
     private boolean checkFields(){
         Boolean passed = true;
@@ -94,16 +104,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signupUser(String email, String shadow, String name) {
-        Toast.makeText(getApplicationContext(), "Signing Up!",Toast.LENGTH_LONG).show();
+        sharedPreferences = getSharedPreferences("BitterFitness", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         sqLiteManager.addUser(email, shadow, name);
-
+        editor.putBoolean("activeUser", true);
+        editor.putString("userEmail", email);
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void loginUser(String email, String shadow) {
-        Toast.makeText(getApplicationContext(), "Logging In!",Toast.LENGTH_LONG).show();
+        SharedPreferences sharedPreferences = getSharedPreferences("BitterFitness", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean login = sqLiteManager.loginUser(getApplicationContext(), email, shadow);
+        if(login){
+            Toast.makeText(getApplicationContext(), "Logging in", Toast.LENGTH_LONG);
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            editor.putBoolean("activeUser", true);
+            editor.putString("userEmail", email);
+            String retriEmail = sharedPreferences.getString("userEmail", "Missing..");
+            Log.e("RETRIEVING FROM SHARED PREF", "User email" + retriEmail);
+        }
     }
 
-    private SQLiteManager loadDBFromMemory() {
+    private  SQLiteManager loadDBFromMemory() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
         return sqLiteManager;
     }

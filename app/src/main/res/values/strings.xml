@@ -16,4 +16,5 @@
     <string name="backgroundlogo">backgroundLogo</string>
     <string name="login_signup">Login/signup</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

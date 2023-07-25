@@ -1,14 +1,12 @@
 package com.example.bitterfitness;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -17,7 +15,6 @@ public class SQLiteManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME= "BitterFitnessDB";
     private static final int DATABASE_VERSION= 1;
     private static final String TABLE_NAME= "BitterFitness";
-    private static final String COUNTER= "Counter";
     private static final String ID_FIELD= "id";
     private static final String USERNAME_FIELD = "Username";
     private static final String FIRSTNAME_FIELD = "FirstName";
@@ -67,7 +64,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     public boolean checkUser(String email){
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = {ID_FIELD};
+        String[] columns = {EMAIL_FIELD};
         String selection = EMAIL_FIELD + " = ?";
         String[] selectionArgs = {email};
 
@@ -108,4 +105,40 @@ public class SQLiteManager extends SQLiteOpenHelper {
         Log.i("DATABASE INFO: ", "User Saved: " + name);
     }
 
+    public boolean loginUser(Context context, String email, String shadow) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = {ID_FIELD};
+        String selection = EMAIL_FIELD + " = ? AND " + PASSWORD_FIELD + " = ?";
+        String[] selectionArgs = {email, shadow};
+
+        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        boolean userExists = (cursor != null && cursor.getCount() > 0);
+
+        if (userExists) {
+            cursor.close();
+            return true;
+        } else {
+            // User does not exist in the database or the password doesn't match
+            return false;
+        }
+    }
+
+
+    @SuppressLint("Range")
+    public String getNameByEmail(String email) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = {EMAIL_FIELD};
+        String selection = EMAIL_FIELD + " = ?";
+        String[] selectionArgs = {email};
+
+        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        String username = null;
+
+        if (cursor != null && cursor.moveToFirst()) {
+            username = cursor.getString(cursor.getColumnIndex(USERNAME_FIELD));
+            cursor.close();
+        }
+
+        return username;
+    }
 }
