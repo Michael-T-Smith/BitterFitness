@@ -3,25 +3,16 @@ package com.example.bitterfitness;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 
-import com.example.bitterfitness.data.RecyclerViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bitterfitness.databinding.ActivityHomeBinding;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     SharedPreferences pref;
@@ -47,7 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         sqLiteManager = loadDBFromMemory();
 
-//       // TO-DO pull user info from database via email.
     }
 
     private SQLiteManager loadDBFromMemory() {

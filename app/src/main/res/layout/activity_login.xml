@@ -11,21 +11,11 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bitterfitness_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/backgroundlogo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/bitterfitness_logo" />
 
         <Button
             android:id="@+id/login"
@@ -64,9 +54,9 @@
             android:layout_marginTop="380dp"
             android:autofillHints="@string/prompt_email"
             android:hint="@string/prompt_email"
-            android:textColor="@color/white"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
+            android:textColor="@color/white"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.712"
@@ -80,6 +70,7 @@
             android:layout_marginTop="20dp"
             android:text=""
             android:textColor="@color/error"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.618"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,8 +107,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
             android:hint="Name!"
+            android:inputType="text"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:visibility="gone"

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean check = checkFields();
+                boolean check = checkFields();
                 if(check){
                     determineButtonUse();
                 }
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private boolean checkFields(){
-        Boolean passed = true;
+        boolean passed = true;
         TextView errorField = findViewById(R.id.errorMessage);
         EditText user = findViewById(R.id.email);
         EditText pd = findViewById(R.id.password);
@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         Button loginBtn = findViewById(R.id.login);
         String email = formatEmail(user.getText().toString());
         String shadow = pd.getText().toString();
-        Log.e("Email Exists: ",""+ email + " " + sqLiteManager.checkUser(email));
 
         if(sqLiteManager.checkUser(email)){
             user.setText("");
@@ -98,9 +97,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String formatEmail(String email) {
-            String formattedEmail = email.replaceAll("\\s", "");
-            // Validate the email format
-        return formattedEmail;
+        // Validate the email format
+        return email.replaceAll("\\s", "");
     }
 
     private void signupUser(String email, String shadow, String name) {
@@ -109,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         sqLiteManager.addUser(email, shadow, name);
         editor.putBoolean("activeUser", true);
         editor.putString("userEmail", email);
+        editor.apply();
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();
@@ -119,14 +118,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         boolean login = sqLiteManager.loginUser(getApplicationContext(), email, shadow);
         if(login){
-            Toast.makeText(getApplicationContext(), "Logging in", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Logging in", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
             editor.putBoolean("activeUser", true);
             editor.putString("userEmail", email);
-            String retriEmail = sharedPreferences.getString("userEmail", "Missing..");
-            Log.e("RETRIEVING FROM SHARED PREF", "User email" + retriEmail);
+            editor.apply();
+            startActivity(intent);
+            finish();
         }
     }
 
