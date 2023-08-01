@@ -27,6 +27,10 @@ public class HomeFragment extends Fragment {
     ArrayList<String> mWorkoutCategories;
     TextView[] mCateTextViews;
     ImageView[] mCateImageViews;
+    TextView[] mForYouTextViews;
+    ImageView[] mForYouImageViews;
+    ArrayList<String> mForYouText;
+
     private FragmentHomeBinding binding;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -62,6 +66,13 @@ public class HomeFragment extends Fragment {
         mCateImageViews[7] = binding.imageCate8;
         mCateImageViews[8] = binding.imageCate9;
         mCateImageViews[9] = binding.imageCate10;
+
+        mForYouImageViews = new ImageView[4];
+        mForYouImageViews[0] = binding.imageForyou1;
+        mForYouImageViews[1] = binding.imageForyou2;
+        mForYouImageViews[2] = binding.imageForyou3;
+        mForYouImageViews[3] = binding.imageForyou4;
+
         InitCateImageItems();
     }
     private void InitCateImageItems() {
@@ -83,6 +94,20 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+
+        mForYouImageViews[0].setImageResource(R.drawable.virtual_assistant);
+        mForYouImageViews[1].setImageResource(R.drawable.purchase_items);
+        mForYouImageViews[2].setImageResource(R.drawable.motivational_panel);
+        mForYouImageViews[3].setImageResource(R.drawable.blog_guide);
+
+        for (int i = 0; i < mForYouImageViews.length; i++) {
+            mForYouImageViews[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "Image Clicked", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
 
@@ -98,6 +123,14 @@ public class HomeFragment extends Fragment {
         mCateTextViews[7] = binding.textCate8;
         mCateTextViews[8] = binding.textCate9;
         mCateTextViews[9] = binding.textCate10;
+
+
+        mForYouTextViews = new TextView[4];
+        mForYouTextViews[0] = binding.textForyou1;
+        mForYouTextViews[1] = binding.textForyou2;
+        mForYouTextViews[2] = binding.textForyou3;
+        mForYouTextViews[3] = binding.textForyou4;
+
         initCateTextItems();
     }
 
@@ -118,11 +151,27 @@ public class HomeFragment extends Fragment {
             if(i < mWorkoutCategories.size()){
                 mCateTextViews[i].setText(mWorkoutCategories.get(i));
                 mCateTextViews[i].setTextColor(getResources().getColor(R.color.cateColor));
+                mCateTextViews[i].setBackgroundColor(getResources().getColor(R.color.cateBackgroundColor));
             } else {
                 mCateTextViews[i].setText("Loading Error..");
                 mCateTextViews[i].setTextColor(Color.RED);
             }
         }
+
+        mForYouText = new ArrayList<>();
+        mForYouText.add("Virtual Assistant");
+        mForYouText.add("Purchase Gear");
+        mForYouText.add("Group Challenges");
+        mForYouText.add("Workout Blogs");
+
+        for (int i = 0; i <= 4; i++) {
+            if(i < mForYouText.size()){
+                mForYouTextViews[i].setText(mForYouText.get(i));
+                mForYouTextViews[i].setTextColor(getResources().getColor(R.color.cateColor));
+                mForYouTextViews[i].setBackgroundColor(getResources().getColor(R.color.cateBackgroundColor));
+            }
+        }
+
     }
 
 
