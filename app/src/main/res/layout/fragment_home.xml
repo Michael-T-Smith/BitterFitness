@@ -10,24 +10,313 @@
         android:id="@+id/text_WorkoutCategories"
         android:layout_width="257dp"
         android:layout_height="28dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#FFFFFF"
         android:text="Workout Categories"
+        android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/view_workoutCategories"
-        android:orientation="horizontal"
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="418dp"
+        android:layout_height="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_WorkoutCategories" />
+        app:layout_constraintTop_toBottomOf="@+id/text_WorkoutCategories">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_Cate2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/image_Cate1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="27dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/image_Cate2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/push_pull" />
+
+                <TextView
+                    android:id="@+id/text_Cate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate1"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate1"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate1"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate1" />
+
+                <TextView
+                    android:id="@+id/text_Cate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate2"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate2"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate2"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_Cate4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/image_Cate3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="27dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/image_Cate4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/text_Cate3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate3"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate3"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate3"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate3" />
+
+                <TextView
+                    android:id="@+id/text_Cate4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate4"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate4"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate4"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_Cate6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/image_Cate5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="27dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/image_Cate6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/text_Cate5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate5"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate5"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_Cate6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate6"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate6"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate6"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate6" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_Cate8"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/image_Cate7"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="27dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/image_Cate8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/text_Cate7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate7"
+                    app:layout_constraintEnd_toEndOf="@+id/image_Cate7"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate7"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate7" />
+
+                <TextView
+                    android:id="@+id/text_Cate8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate8"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/image_Cate10"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/image_Cate9"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="27dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/image_Cate10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/text_Cate10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate10"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate10" />
+
+                <TextView
+                    android:id="@+id/text_Cate9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_Cate9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/image_Cate9"
+                    app:layout_constraintTop_toTopOf="@+id/image_Cate9" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
