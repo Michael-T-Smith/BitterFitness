@@ -24,21 +24,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         sharedPreferences = getSharedPreferences("BitterFitness", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        Button loginButton = findViewById(R.id.login);
-        sqLiteManager = loadDBFromMemory();
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean check = checkFields();
-                if(check){
-                    determineButtonUse();
+        boolean activeUser = sharedPreferences.getBoolean("activeUser", false);
+        if(!activeUser){
+            setContentView(R.layout.activity_login);
+            Button loginButton = findViewById(R.id.login);
+            sqLiteManager = loadDBFromMemory();
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean check = checkFields();
+                    if(check){
+                        determineButtonUse();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
 

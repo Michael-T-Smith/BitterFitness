@@ -3,6 +3,7 @@ package com.example.bitterfitness;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -25,7 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         pref = getSharedPreferences("BitterFitness", Context.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = pref.edit();
-
+        boolean activeUser = pref.getBoolean("activeUser", false);
+        Log.e("Existing User?", "" + activeUser);
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
