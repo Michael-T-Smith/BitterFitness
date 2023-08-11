@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".ui.notifications.NotificationsFragment">
 
     <Button
@@ -11,12 +12,13 @@
         android:layout_width="181dp"
         android:layout_height="48dp"
         android:layout_marginStart="115dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="534dp"
         android:layout_marginEnd="115dp"
-        android:layout_marginBottom="513dp"
+        android:layout_marginBottom="149dp"
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
